@@ -3,6 +3,7 @@ package com.gabrielcasag.osworks.api.controller;
 import com.gabrielcasag.osworks.domain.model.Client;
 import com.gabrielcasag.osworks.domain.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,4 +33,9 @@ public class ClientController {
         return ResponseEntity.notFound().build();
     }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client add(@RequestBody Client client) {
+        return clientRepository.save(client);
+    }
 }
