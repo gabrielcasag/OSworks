@@ -1,6 +1,9 @@
 package com.gabrielcasag.osworks.domain.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
@@ -11,11 +14,21 @@ public class Client {
     private Long id;
 
     @Column
+    @NotBlank
+    @Size(max = 60)
     private String name;
+
     @Column
+    @NotBlank
+    @Email
+    @Size(max = 255)
     private String email;
+
     @Column
+    @NotBlank
+    @Size(max = 20)
     private String fone;
+
     @Column
     public Long getId() {
         return id;
